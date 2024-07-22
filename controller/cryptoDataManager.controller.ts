@@ -48,13 +48,22 @@ export class CryptoDataManagerController {
     this.logger.info('CryptoDataManagerController: fetchTokenomics', null);
 
     try {
+      const tokenName = req.params.tokenName;
       const cryptorankCurrencies = await this.cryptorankService.getCurrencies();
 
       if (!cryptorankCurrencies) {
         return handleResponse(res, 400, 'Currencies was not retrived');
       }
 
-      return handleResponse(res, 200, 'Tokenomics retrived successfully', cryptorankCurrencies);
+      const foundCryptorankCurrency = cryptorankCurrencies.data.find(
+        (tokenItem) => tokenItem.slug === tokenName.toLocaleLowerCase(),
+      );
+
+      if (!foundCryptorankCurrency) {
+        return handleResponse(res, 400, 'Currency for provided token name was not found');
+      }
+
+      return handleResponse(res, 200, 'Tokenomics retrived successfully', foundCryptorankCurrency);
     } catch (error) {
       return next(error);
     }
