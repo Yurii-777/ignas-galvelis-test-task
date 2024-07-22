@@ -8,6 +8,7 @@ Create .env file contains:
 
 - `PORT` = 3080;
 - `CRYPTORANK_API_KEY`;
+- `OPEN_AI_KEY`;
 
 `npm i`;
 `npm run dev`;

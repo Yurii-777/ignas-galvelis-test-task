@@ -51,6 +51,10 @@ class App {
       this.cryptoDataManagerController.fetchTokenomics(req, res, next);
     });
 
+    this.express.get('/api/crypto-data/report/:tokenName', getTokenData, handleValidate, (req, res, next) => {
+      this.cryptoDataManagerController.generateReport(req, res, next);
+    });
+
     // global error handler
     this.express.use((error, req, res, next) => {
       this.logger.error(error);
