@@ -43,9 +43,12 @@ class App {
       res.send('Ok!');
     });
 
-    // document api
-    this.express.get('/api/crypto-data/:id', getTokenData, handleValidate, (req, res, next) => {
+    this.express.get('/api/crypto-data/:tokenName', getTokenData, handleValidate, (req, res, next) => {
       this.cryptoDataManagerController.fetchTokenInfo(req, res, next);
+    });
+
+    this.express.get('/api/crypto-data/tokenomics/:tokenName', getTokenData, handleValidate, (req, res, next) => {
+      this.cryptoDataManagerController.fetchTokenomics(req, res, next);
     });
 
     // global error handler
