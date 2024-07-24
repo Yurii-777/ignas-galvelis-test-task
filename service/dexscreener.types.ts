@@ -25,6 +25,6 @@ export interface TokenModel {
 }
 
 export interface SearchTokenInfoResponse {
-  schemaVersion: 'string';
+  schemaVersion: '1.0';
   pairs: TokenModel[];
 }

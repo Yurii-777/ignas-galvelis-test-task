@@ -1,4 +1,4 @@
-interface TokenModel {
+export interface TokenModel {
   id: number;
   rank: number;
   slug: string;
