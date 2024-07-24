@@ -14,3 +14,7 @@ Create .env file contains:
 `npm run dev`;
 
 app.ts contains available API endpoints.
+
+Run tests:
+
+- `npx jest`;
